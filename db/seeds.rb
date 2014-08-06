@@ -7,3 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+DvrSystem.destroy_all
+Box.destroy_all
+
+DvrSystem.create(:user_id => User.last.id)
+
+Box.create(box_number:"1", :dvr_system_id => DvrSystem.last.id)
+Box.create(box_number:"2", :dvr_system_id => DvrSystem.last.id)
