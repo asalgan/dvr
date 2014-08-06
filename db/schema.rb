@@ -14,11 +14,14 @@
 ActiveRecord::Schema.define(version: 20140806214445) do
 
   create_table "boxes", force: true do |t|
+    t.integer  "box_number"
+    t.integer  "dvr_system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "dvr_systems", force: true do |t|
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +29,8 @@ ActiveRecord::Schema.define(version: 20140806214445) do
   create_table "shows", force: true do |t|
     t.integer  "box_id"
     t.string   "title"
+    t.integer  "channel"
+    t.boolean  "single_recording", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
