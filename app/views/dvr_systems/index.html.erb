@@ -1,6 +1,16 @@
 <section class="my-dvr-boxes">
 	<p><%= link_to "Shows", shows_url  %></p>
-	<% @boxes.each do |box| %>
-		<%= box.box_number %>
+	<%= @box_1.box_number %>
+	<% @box_1_shows.each do |show| %>
+	<%= show.title %>
+	<%= show.start_time.strftime("%H:%M")  %> - 
+	<%= show.end_time.strftime("%H:%M")  %><br>
+	<% end %>
+
+	<%= @box_2.box_number %>
+	<% @box_2_shows.each do |show| %>
+	<%= show.title %>
+	<%= show.start_time.strftime("%H:%M")  %> -
+	<%= show.end_time.strftime("%H:%M") %>
 	<% end %>
 </section>
