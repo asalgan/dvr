@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806214445) do
+ActiveRecord::Schema.define(version: 20140807171721) do
 
   create_table "boxes", force: true do |t|
     t.integer  "box_number"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20140806214445) do
     t.boolean  "single_recording", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "users", force: true do |t|

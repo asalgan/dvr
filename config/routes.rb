@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :dvr_systems
+  resources :shows
 
 end

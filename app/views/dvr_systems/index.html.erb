@@ -1,0 +1,6 @@
+<section class="my-dvr-boxes">
+	<p><%= link_to "Shows", shows_url  %></p>
+	<% @boxes.each do |box| %>
+		<%= box.box_number %>
+	<% end %>
+</section>
