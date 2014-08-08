@@ -22,7 +22,7 @@ $(document).ready(function() {
 	$('.record-button').click(function(event) {
 		$.ajax({
       type: "POST",
-      url: "/record",
+      url: record,
     });
-
+	});
 });

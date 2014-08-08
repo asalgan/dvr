@@ -1,3 +1,3 @@
 class BoxesController < ApplicationController
-	
+
 end

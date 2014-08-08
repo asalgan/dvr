@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :shows do
   	get :record
-  	put :record
+  	post :record
   end
 
 end
