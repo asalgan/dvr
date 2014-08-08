@@ -1,0 +1,4 @@
+<section class="container">
+	<%= @show.title %>
+	<%= link_to "Record", show_record_path(:show_id => params[:id]), remote: true, class: "record-button" %>
+</section>

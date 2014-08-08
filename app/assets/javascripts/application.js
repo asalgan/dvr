@@ -15,3 +15,14 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+
+$(document).ready(function() {
+
+	$('.record-button').click(function(event) {
+		$.ajax({
+      type: "POST",
+      url: "/record",
+    });
+
+});

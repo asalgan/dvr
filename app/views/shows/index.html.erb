@@ -1,9 +1,13 @@
-<section>
+<section class="container">
 
 	<% @shows.each do |show| %>
-		<%= show.title %>
-		<%= show.start_time.strftime("%H:%M") %>
-		<%= show.end_time.strftime("%H:%M") %>
+		<li id="<%=show.id%>"><%= show.title %>
+			<%= show.start_time.strftime("%I:%M%P") %> -
+			<%= show.end_time.strftime("%I:%M%P") %>
+				<%#= link_to "Record", show, {'data-toggle' =>  "modal", 'data-target' => '#myModal'}%>
+			<%#= render 'show' %>
+			<%= link_to "View", show %>
+		</li>
 	<% end %>
 
 </section>
