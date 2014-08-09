@@ -9,8 +9,10 @@ class ShowsController < ApplicationController
   end
 
   def update
+    @show = Show.find(params[:id])
+
     respond_to do |format|
-      if @show.update(show_params)
+      if @show.update
         format.html { redirect_to show_url }
       else
         format.html { render action: 'edit' }
@@ -24,6 +26,10 @@ class ShowsController < ApplicationController
 
   def record
     show = Show.find(params[:show_id])
+    
+    show.box_id = params[:show][:box_id]
+    show.save
+
     current_show_time = show.start_time..show.end_time
     @current_saved_shows_array = []
 

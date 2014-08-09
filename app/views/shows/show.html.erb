@@ -1,4 +1,9 @@
 <section class="container">
 	<%= @show.title %>
-	<%= link_to "Record", show_record_path(:show_id => params[:id]), remote: true, class: "record-button" %>
+
+	<%= form_for @show, :url => show_record_path(:show_id => params[:id]), method: :post do |f| %>
+		<%= f.select :box_id, Box.all.collect { |p| [ p.box_number, p.id ] } %>
+		<%= f.submit "Record", :remote => true %>
+	<% end %>
+
 </section>

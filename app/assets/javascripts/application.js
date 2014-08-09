@@ -19,10 +19,11 @@
 
 $(document).ready(function() {
 
-	$('.record-button').click(function(event) {
-		$.ajax({
-      type: "POST",
-      url: record,
-    });
-	});
+	// $('.record-button').click(function(event) {
+	// 	$.ajax({
+ //      type: "POST",
+ //      url: record,
+ //    });
+	// });
+
 });

@@ -14,6 +14,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'spork-rails', '4.0.0'
 
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
@@ -21,11 +22,11 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'sqlite3'
+  gem 'bullet'
 end
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
-  gem 'bullet'
 end
 
 group :test do
