@@ -14,7 +14,11 @@
           <% if show.recording == false %>
             <div class="not-currently-recording">
               <%= form_for show, :url => show_record_path(:show_id => show.id), method: :post do |f| %>
-                <%= f.select :box_id, Box.all.collect { |p| [ p.box_number, p.id ] }, :include_blank => true %>
+
+                <%= f.radio_button :box_id, Box.first.id, class: "show-radio-button" %>
+                <%= f.label :box_id, 'Box 1', :value => Box.first.id %>
+                <%= f.radio_button :box_id, Box.last.id, class: "show-radio-button" %>
+                <%= f.label :box_id, 'Box 2', :value => Box.last.id %>
                 <%= f.submit "Record", class: "record-button" %>
               <% end %>
             </div>
