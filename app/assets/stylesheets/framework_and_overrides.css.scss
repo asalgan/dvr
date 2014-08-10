@@ -2,6 +2,14 @@
 
 $orange: #f5715b;
 
+%transition {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
 img {
   @extend .img-responsive;
   margin: 0 auto;
@@ -22,6 +30,10 @@ main {
 .navbar-brand {
   font-size: inherit;
   }
+
+.navbar-fixed-top {
+  position: relative;
+}
 .column {
   @extend .col-md-6;
   @extend .text-center;
@@ -91,13 +103,18 @@ main {
 
   .all-shows-link {
     padding: 12px 55px 10px 55px;
-    background-color: #f5715b;
+    background-color: $orange;
     color: #fff;
     font-size: 18px;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
     float: right;
     margin-top: 30px;
+    @extend %transition;
+
+    &:hover {
+      background-color: darken($orange, 10%)
+    }
   }
 
   .first-box, .second-box {
@@ -128,7 +145,12 @@ main {
 
 .all-shows {
   margin-top: 40px;
+  height: 100%;
+
   .show-cards {
+    margin: 0 auto;
+    padding-left: 0px;
+
     .show {   
       height: 150px;
       -webkit-box-shadow: 0 2px 3px rgba(56,67,67,0.2);
@@ -137,17 +159,74 @@ main {
       background: white;
       border: 1px solid #dfdfdf;
       border-radius: 4px;
-      margin-bottom: 30px;
-      @extend %margin-right;
+      padding:10px;
+      margin-bottom: 20px;
+      margin-top: 20px;
 
       .show-title {
-        display: block;
+        display: inline;
         font-size: 16px;
         color: #333;
-        font-size: 18px;
+        font-size: 22px;
         line-height: 20px;
         font-weight: 300;
         -webkit-font-smoothing: antialiased;
+      }
+
+      .show-channel {
+        float: right;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .show-time {
+        display: block;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      form {
+        float: right;
+      }
+
+      %button {
+        border: none;
+        color: white;
+        font-size: 12px;
+        font-weight: 200;
+        margin-left: 10px;
+        letter-spacing: 1px;
+      }
+
+      .record-button {
+        background-color: #008C00;
+        @extend %button;
+        @extend %transition;
+
+        &:hover {
+          background-color: lighten(#008C00, 5%);
+        }
+      }
+
+      .cancel-record-button {
+        padding: 3px 8px 4px 8px;
+        background-color: #D01F3C;
+        @extend %button;
+        @extend %transition;
+
+        &:hover {
+          background-color: lighten(#D01F3C, 5%);
+        }
+      }
+
+      .currently-recording, .not-currently-recording {
+        display: block;
+        float: right;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        position: absolute;
+        text-align: right;
+        background-color: #eee;
       }
     }
   }
