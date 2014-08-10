@@ -6,8 +6,12 @@
   <div class="first-box">
     <h3>DVR Box 1</h3>
     <ul class="shows-list">
-      <% @box_1_shows.each do |show| %>
-        <%= render :partial => 'shows_list_items', :locals => { :show => show } %>
+      <% if @box_1_shows.present? %>
+        <% @box_1_shows.each do |show| %>
+          <%= render :partial => 'shows_list_items', :locals => { :show => show } %>
+        <% end %>
+      <% else %>
+        <p class="no-shows">There aren't any shows being recorded on this box. You can start recording shows by clicking 'ALL SHOWS'</p>
       <% end %>
     </ul>
   </div>
@@ -15,8 +19,12 @@
   <div class="second-box">
     <h3>DVR Box 2</h3>
     <ul class="shows-list">
-      <% @box_2_shows.each do |show| %>
-        <%= render :partial => 'shows_list_items', :locals => { :show => show } %>
+      <% if @box_2_shows.present? %>
+        <% @box_2_shows.each do |show| %>
+          <%= render :partial => 'shows_list_items', :locals => { :show => show } %>
+        <% end %>
+      <% else %>
+        <p class="no-shows">There aren't any shows being recorded on this box. You can start recording shows by clicking 'ALL SHOWS'</p>
       <% end %>
     </ul>
   </div>
