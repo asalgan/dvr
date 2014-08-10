@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :shows do
   	get :record
   	post :record
+  	get :delete_record
+  	post :delete_record
   end
+
 
 end

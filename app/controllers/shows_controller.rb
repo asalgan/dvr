@@ -43,7 +43,7 @@ class ShowsController < ApplicationController
       else
         show.update_attributes(:recording => true)
         show.save
-        redirect_to show_path(params[:show_id])
+        redirect_to dvr_systems_path
       end
 
     elsif show.box.box_number == 2
@@ -59,10 +59,17 @@ class ShowsController < ApplicationController
       else
         show.update_attributes(:recording => true)
         show.save
-        redirect_to show_path(params[:show_id])
+        redirect_to dvr_systems_path
       end
     end
 
+  end
+
+  def delete_record
+    show = Show.find(params[:show_id])
+    show.update_attributes(recording: false)
+    show.update_attributes(box_id: nil)
+    redirect_to dvr_systems_path
   end
 
   private
