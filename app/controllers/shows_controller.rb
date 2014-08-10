@@ -39,7 +39,7 @@ class ShowsController < ApplicationController
       end
 
       if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
-        redirect_to show_path(params[:show_id])
+        redirect_to shows_path
       else
         show.update_attributes(:recording => true)
         show.save
@@ -55,7 +55,7 @@ class ShowsController < ApplicationController
       end
 
       if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
-        redirect_to show_path(params[:show_id])
+        redirect_to shows_path
       else
         show.update_attributes(:recording => true)
         show.save

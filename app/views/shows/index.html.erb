@@ -1,13 +1,19 @@
 <section class="container">
 
-	<% @shows.each do |show| %>
-		<li id="<%=show.id%>"><%= show.title %>
-			<%= show.start_time.strftime("%I:%M%P") %> -
-			<%= show.end_time.strftime("%I:%M%P") %>
-				<%#= link_to "Record", show, {'data-toggle' =>  "modal", 'data-target' => '#myModal'}%>
-			<%#= render 'show' %>
-			<%= link_to "View", show %>
-		</li>
-	<% end %>
+	<div class="all-shows">
+		<ul class="show-cards">
+		<% @shows.each do |show| %>
+			<li class="show col-md-3" id="<%=show.id%>">
+				<span class="show-title"><%= show.title %></span>
+				<%= show.start_time.strftime("%I:%M%P") %> -
+				<%= show.end_time.strftime("%I:%M%P") %>
+				<%= form_for show, :url => show_record_path(:show_id => show.id), method: :post do |f| %>
+					<%= f.select :box_id, Box.all.collect { |p| [ p.box_number, p.id ] } %>
+					<%= f.submit "Record" %>
+				<% end %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 
 </section>

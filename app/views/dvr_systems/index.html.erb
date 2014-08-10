@@ -1,40 +1,40 @@
 <section class="my-dvr-boxes container">
   <h1 class="recordings-header">My Current Recordings</h1>
-  <%= link_to "All shows", shows_url, :class => "all-shows"  %>
+  <%= link_to "All shows", shows_url, :class => "all-shows-link"  %>
 
   <div class="first-box">
     <h3>DVR Box 1</h3>
     <ul class="shows-list">
       <% @box_1_shows.each do |show| %>
-      <li class="shows-list-item">
-        <span class="title col-md-4"><%= show.title %></span>
-        <span class="showtime col-md-4"><%= show.start_time.strftime("%I:%M%P")  %> - 
-        <%= show.end_time.strftime("%I:%M%P")  %></span>
-        <span class="channel col-md-3">Channel <%= show.channel %></span>
-        <%= link_to show_delete_record_path(:show_id => show.id) do %>
-          <i class="fa fa-times"></i>
-          <span>Cancel</span>
-        <% end %>
-        <% end %>
-      </li>
+        <li class="shows-list-item">
+          <span class="title col-md-4"><%= show.title %></span>
+          <span class="showtime col-md-4"><%= show.start_time.strftime("%I:%M%P")  %> - 
+          <%= show.end_time.strftime("%I:%M%P")  %></span>
+          <span class="channel col-md-3">Channel <%= show.channel %></span>
+          <%= link_to show_delete_record_path(:show_id => show.id) do %>
+            <i class="fa fa-times"></i>
+            <span>Cancel</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 
   <div class="second-box">
     <h3>DVR Box 2</h3>
     <ul class="shows-list">
-    <% @box_2_shows.each do |show| %>
-      <li class="shows-list-item">
-        <span class="title col-md-4"><%= show.title %></span>
-        <span class="showtime col-md-4"><%= show.start_time.strftime("%I:%M%P")  %> -
-        <%= show.end_time.strftime("%I:%M%P") %></span>
-        <span class="channel col-md-3">Channel <%= show.channel %></span>
-        <%= link_to show_delete_record_path(:show_id => show.id) do %>
-          <i class="fa fa-times"></i>
-          <span>Cancel</span>
-        <% end %>
-        <% end %>
-      </li>
+      <% @box_2_shows.each do |show| %>
+        <li class="shows-list-item">
+          <span class="title col-md-4"><%= show.title %></span>
+          <span class="showtime col-md-4"><%= show.start_time.strftime("%I:%M%P")  %> -
+          <%= show.end_time.strftime("%I:%M%P") %></span>
+          <span class="channel col-md-3">Channel <%= show.channel %></span>
+          <%= link_to show_delete_record_path(:show_id => show.id) do %>
+            <i class="fa fa-times"></i>
+            <span>Cancel</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
   
