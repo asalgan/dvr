@@ -1,18 +1,33 @@
 <section class="my-dvr-boxes container">
-	<p><%= link_to "All shows", shows_url  %></p>
-	<%= @box_1.box_number %>
+  <h1 class="recordings-header">My Current Recordings</h1>
+  <%= link_to "All shows", shows_url, :class => "all-shows"  %>
 
-	<% @box_1_shows.each do |show| %>
-	<%= show.title %>
-	<%= show.start_time.strftime("%I:%M%P")  %> - 
-	<%= show.end_time.strftime("%I:%M%P")  %><br>
-	<% end %>
+  <div class="first-box">
+    <h3>DVR Box 1</h3>
+    <ul class="shows-list">
+      <% @box_1_shows.each do |show| %>
+      <li class="shows-list-item">
+        <span class="title col-md-4"><%= show.title %></span>
+        <span class="showtime col-md-4"><%= show.start_time.strftime("%I:%M%P")  %> - 
+        <%= show.end_time.strftime("%I:%M%P")  %></span>
+        Channel <%= show.channel %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 
-	<%= @box_2.box_number %>
-	
-	<% @box_2_shows.each do |show| %>
-	<%= show.title %>
-	<%= show.start_time.strftime("%I:%M%P")  %> -
-	<%= show.end_time.strftime("%I:%M%P") %>
-	<% end %>
+  <div class="second-box">
+    <h3>DVR Box 2</h3>
+    <ul class="shows-list">
+    <% @box_2_shows.each do |show| %>
+      <li class="shows-list-item">
+        <span class="title col-md-4"><%= show.title %></span>
+        <span class="showtime col-md-4"><%= show.start_time.strftime("%I:%M%P")  %> -
+        <%= show.end_time.strftime("%I:%M%P") %></span>
+        Channel <%= show.channel %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  
 </section>
