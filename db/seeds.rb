@@ -16,7 +16,6 @@ end_time_half_hour = t + 30.minutes
 end_time_full_hour = t + 60.minutes
 
 Show.create(title:"The Fox", :channel => 22, :start_time => Time.now, :end_time => end_time_half_hour)
-Show.create(title:"Simpsons", :channel => 37, :start_time => Time.now, :end_time => end_time_half_hour)
 Show.create(title:"Documentary", :channel => 159, :start_time => Time.now, :end_time => end_time_full_hour)
 Show.create(title:"Family Guy", :channel => 12, :start_time => Time.now, :end_time => end_time_full_hour, :single_recording => false)
 Show.create(title:"The League", :channel => 34, :start_time => Time.now, :end_time => end_time_full_hour, :single_recording => false)

@@ -69,7 +69,7 @@ class ShowsController < ApplicationController
     show = Show.find(params[:show_id])
     show.update_attributes(recording: false)
     show.update_attributes(box_id: nil)
-    redirect_to shows_path
+    redirect_to :back
   end
 
   private
