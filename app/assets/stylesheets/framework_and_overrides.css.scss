@@ -128,6 +128,34 @@ a:hover {
   margin-top: 51px;
 }
 
+button {
+  padding: 0px;
+  border: 0px;
+}
+.nav-link {
+  border: 3px solid $orange;
+  padding: 10px 25px;
+  color: white;
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 7px;
+  @extend %transition;
+  margin-left: 20px;
+
+  &:first-child {
+    width: 124px;
+  }
+
+  &:hover {
+    background-color: $orange;
+  }
+
+  a {
+    color: white;
+    font-size: 20px;
+  }
+}
+
 .my-dvr-boxes {
   margin-top: 51px;
 
