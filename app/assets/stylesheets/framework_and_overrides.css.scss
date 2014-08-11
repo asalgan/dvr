@@ -77,9 +77,16 @@ a:hover {
   margin: 0 auto;
 }
 .authform form {
-  @extend .well;
+  -webkit-font-smoothing: antialiased;
   @extend .well-lg;
   padding-bottom: 40px;
+  border-radius: 0px;
+  background: rgba(54, 25, 25, .5);
+
+  h3, label, p {
+    color: white;
+    text-align: center;
+  }
 }
 .authform .right {
   float: right !important;
@@ -87,6 +94,15 @@ a:hover {
 .authform .button {
   @extend .btn;
   @extend .btn-primary;
+  background-color: $orange;
+  border: none;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 500;
+  @extend %transition;
+
+  &:hover {
+    background-color: darken($orange, 5%);
+  }
 }
 .authform fieldset {
   @extend .well;
