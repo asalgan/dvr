@@ -1,9 +1,25 @@
 @import "bootstrap";
 
 $orange: #f5715b;
+
+html {
+  height: 100%;
+}
+
 body {
   background-color: #fbfcfd;
+  height: 100%;
 }
+
+.homepage {
+  background-image: url('/assets/background.JPG');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
 %transition {
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -27,7 +43,13 @@ a:hover {
 
 .navbar-brand {
   font-size: inherit;
+}
+.navbar-nav > li > a {
+
+  &:hover {
+    background-color: transparent;
   }
+}
 
 .navbar-fixed-top {
   position: relative;
