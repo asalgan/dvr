@@ -83,7 +83,7 @@ a:hover {
   border-radius: 0px;
   background: rgba(54, 25, 25, .5);
 
-  h3, label, p {
+  h3, label, p, a {
     color: white;
     text-align: center;
   }
@@ -281,12 +281,13 @@ button {
       }
 
       .record-button {
-        background-color: #008C00;
+        // background-color: #008C00;
+        background-color: #ccc;
         @extend %button;
         @extend %transition;
 
         &:hover {
-          background-color: lighten(#008C00, 5%);
+          // background-color: lighten(#008C00, 5%);
         }
       }
 
@@ -334,8 +335,9 @@ button {
           left: 0;  
           border-radius: 8px;
           background-color: #aaa;  
-          box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
-        }  
+          box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+        }
+        
         .show-radio-button label:before {  
           border-radius: 8px;  
         }  
@@ -349,7 +351,7 @@ button {
           color: #f3f3f3;
           font-size: 40px;
           text-align: center;
-          line-height: 16px;  
+          line-height: 15.5px;
         }  
       }
     }

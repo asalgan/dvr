@@ -14,17 +14,19 @@
           <% if show.recording == false %>
             <div class="not-currently-recording">
               <%= form_for show, :url => show_record_path(:show_id => show.id), method: :post do |f| %>
+                <%#= render 'shared/error_messages'%>
+                <%#= devise_error_messages! %>
                 <%= f.radio_button :box_id, Box.first.id, class: "show-radio-button" %>
                 <%= f.label :box_id, 'Box 1', :value => Box.first.id %>
                 <%= f.radio_button :box_id, Box.last.id, class: "show-radio-button" %>
                 <%= f.label :box_id, 'Box 2', :value => Box.last.id %>
-                <%= f.submit "Record", class: "record-button" %>
+                <%= f.submit "Record", data: { disable_with: "Please wait.." }, :disabled => true, class: "record-button" %>
               <% end %>
             </div>
           <% else %>
             <div class="currently-recording">
               Recording on Box <%= show.box.box_number %>
-              <%= link_to "Cancel", show_delete_record_path(:show_id => show.id), class: "cancel-record-button" %>
+              <%= link_to "Cancel", show_delete_record_path(:show_id => show.id), data: { disable_with: "Cancelling.." }, class: "cancel-record-button" %>
             </div>
           <% end %>
         </li>
