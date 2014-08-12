@@ -1,6 +1,7 @@
 class DvrSystemsController < ApplicationController
 
   def index
+  	@page_class = "show_page"
   	@box_1 = Box.find_by(:box_number => 1)
   	@box_1_shows = @box_1.shows.where(:recording => true)
   	

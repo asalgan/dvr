@@ -9,12 +9,20 @@
 
 $(document).ready(function() {
 
-	// $('.record-button').click(function(event) {
-	// 	$.ajax({
- //      type: "POST",
- //      url: record,
- //    });
-	// });
+
+// var $this = $(this);
+// var $form = $this.closest('form');
+//   $form.submit(function() {  
+//     var valuesToSubmit = $this.serialize();
+// 	// $('.record-button').click(function(event) {
+// 		$.ajax({
+//       url: $(this).attr('record'),
+//       type: 'POST',
+//       data: valuesToSubmit
+//     })
+//     return false;
+// 	});
+
 
   if ($('body').hasClass('show_page')) {
     $('.show-radio-button').on('keyup change', function(e){
