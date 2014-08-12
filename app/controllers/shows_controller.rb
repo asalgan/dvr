@@ -2,6 +2,8 @@ class ShowsController < ApplicationController
 
   def index
     @shows = Show.all
+    @show_dropdowns = Box.all.collect { |p| [ p.box_number, p.id ] }
+    @page_class = "show_page"
   end
 
   def show
@@ -39,11 +41,11 @@ class ShowsController < ApplicationController
       end
 
       if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
-        redirect_to shows_path
+        redirect_to :back
       else
         show.update_attributes(:recording => true)
         show.save
-        redirect_to shows_path
+        redirect_to :back
       end
 
     elsif show.box.box_number == 2
@@ -55,11 +57,11 @@ class ShowsController < ApplicationController
       end
 
       if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
-        redirect_to shows_path
+        redirect_to :back
       else
         show.update_attributes(:recording => true)
         show.save
-        redirect_to shows_path
+        redirect_to :back
       end
     end
 

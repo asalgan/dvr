@@ -14,19 +14,22 @@ $(document).ready(function() {
  //      url: record,
  //    });
 	// });
-
-  $('.show-radio-button').on('keyup change', function(e){
-    var $this = $(this);
-    var $form = $this.closest('form');
-    var $button = $form.find('.record-button');
-    var disabled = $this.val() == ''; 
-      $button.prop('disabled', disabled); 
-      $button.css("background-color", disabled ? "" : "#008C00");
-  });
-
 	
 });
 
+
+$(window).load(function() {
+  if ($('body').hasClass('show_page')) {
+    $('.show-radio-button').on('keyup change', function(e){
+      var $this = $(this);
+      var $form = $this.closest('form');
+      var $button = $form.find('.record-button');
+      var disabled = $this.val() == ''; 
+        $button.prop('disabled', disabled); 
+        $button.css("background-color", disabled ? "" : "#008C00");
+    });
+  };
+}); 
 
 
 

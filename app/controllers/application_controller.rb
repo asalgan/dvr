@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def homepage_background
   	if keep_controllers.include?(controller_name)
-  		@home_page = true
+  		@page_class = "homepage"
   	end
   end
 
