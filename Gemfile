@@ -16,7 +16,6 @@ gem 'spork-rails', '4.0.0'
 
 
 group :development do
-  gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
   gem 'hub', :require=>nil
   gem 'quiet_assets'

@@ -6,10 +6,6 @@ class ShowsController < ApplicationController
     @page_class = "show_page"
   end
 
-  def show
-    @show = Show.find(params[:id])
-  end
-
   def update
     @show = Show.find(params[:id])
 
@@ -27,14 +23,14 @@ class ShowsController < ApplicationController
   end
 
   def record
-    show = Show.find(params[:show_id])
+    @show = Show.find(params[:show_id])
 
-    show.box_id = params[:show][:box_id]
+    @show.box_id = params[:show][:box_id]
 
-    if show.box.box_number == 1
+    if @show.box.box_number == 1
       record_show(box_one)
 
-    elsif show.box.box_number == 2
+    elsif @show.box.box_number == 2
       record_show(box_two)
 
     end
@@ -64,7 +60,7 @@ class ShowsController < ApplicationController
 
     def record_show(box)
       shows = box.shows.where(:recording => true)
-      current_show_time = show.start_time..show.end_time
+      current_show_time = @show.start_time..@show.end_time
       @current_saved_shows_array = []
       
       shows.each do |showtime|
@@ -74,8 +70,8 @@ class ShowsController < ApplicationController
       if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
         redirect_to :back
       else
-        show.update_attributes(:recording => true)
-        show.save
+        @show.update_attributes(:recording => true)
+        @show.save
         redirect_to :back
       end
     end
