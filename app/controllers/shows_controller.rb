@@ -27,9 +27,9 @@ class ShowsController < ApplicationController
     show.box_id = params[:show][:box_id]
 
     if show.box.box_number == 1
-      Show.record_show(box_one, show)
+      record_show(box_one, show)
     elsif show.box.box_number == 2
-      Show.record_show(box_two, show)
+      record_show(box_two, show)
     end
     redirect_to :back
   end
@@ -50,6 +50,19 @@ class ShowsController < ApplicationController
     def box_two
       Box.find_by(:box_number => 2)
     end
+
+    def record_show(box, show)
+    overlapping_shows = box.shows.where(recording: true).where("start_time <= :show_end AND end_time >= :show_start", {show_start: show.start_time, show_end: show.end_time}).flatten.first
+
+    if overlapping_shows.present?
+      respond_to do |format|
+        format.js { render :js => "my_function();" }
+      end
+    else
+      show.update_attributes(:recording => true)
+      show.save
+    end
+  end
 
 
 end
