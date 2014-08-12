@@ -5,10 +5,7 @@
 //= require_tree .
 
 
-
-
 $(document).ready(function() {
-
 
 // var $this = $(this);
 // var $form = $this.closest('form');
@@ -41,13 +38,3 @@ $(document).ready(function() {
   };
 	
 });
-
-
-
-
-
-
-
-
-
-

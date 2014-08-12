@@ -30,39 +30,13 @@ class ShowsController < ApplicationController
     show = Show.find(params[:show_id])
 
     show.box_id = params[:show][:box_id]
-    current_show_time = show.start_time..show.end_time
 
     if show.box.box_number == 1
-      shows = box_one.shows.where(:recording => true)
-      @current_saved_shows_array = []
-      
-      shows.each do |showtime|
-        @current_saved_shows_array << (showtime.start_time..showtime.end_time)
-      end
-
-      if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
-        redirect_to :back
-      else
-        show.update_attributes(:recording => true)
-        show.save
-        redirect_to :back
-      end
+      record_show(box_one)
 
     elsif show.box.box_number == 2
-      shows = box_two.shows.where(:recording => true)
-      @current_saved_shows_array = []
-      
-      shows.each do |showtime|
-        @current_saved_shows_array << (showtime.start_time..showtime.end_time)
-      end
+      record_show(box_two)
 
-      if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
-        redirect_to :back
-      else
-        show.update_attributes(:recording => true)
-        show.save
-        redirect_to :back
-      end
     end
 
   end
@@ -86,6 +60,24 @@ class ShowsController < ApplicationController
 
     def box_two
       Box.find_by(:box_number => 2)
+    end
+
+    def record_show(box)
+      shows = box.shows.where(:recording => true)
+      current_show_time = show.start_time..show.end_time
+      @current_saved_shows_array = []
+      
+      shows.each do |showtime|
+        @current_saved_shows_array << (showtime.start_time..showtime.end_time)
+      end
+
+      if @current_saved_shows_array.select {|c| current_show_time.overlaps?(c)}.present?
+        redirect_to :back
+      else
+        show.update_attributes(:recording => true)
+        show.save
+        redirect_to :back
+      end
     end
 
 
