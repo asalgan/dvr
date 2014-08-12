@@ -31,12 +31,3 @@
   </div>
 
 </section>
-
-<script>$('.show-radio-button').on('keyup change', function(e){
-      var $this = $(this);
-      var $form = $this.closest('form');
-      var $button = $form.find('.record-button');
-      var disabled = $this.val() == ''; 
-        $button.prop('disabled', disabled); 
-        $button.css("background-color", disabled ? "" : "#008C00");
-    });</script>
