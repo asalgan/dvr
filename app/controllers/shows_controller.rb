@@ -55,9 +55,7 @@ class ShowsController < ApplicationController
 
       respond_to do |format|
         if @overlapping_shows.present?
-          format.js do
-             render :nothing => true 
-           end
+          format.js
         else
           show.update_attributes(:recording => true)
           show.save
