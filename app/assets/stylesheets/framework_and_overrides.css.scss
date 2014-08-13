@@ -306,7 +306,7 @@ button {
         }
       }
 
-      .currently-recording, .not-currently-recording {
+      .recording {
         display: block;
         float: right;
         width: 100%;
@@ -321,4 +321,19 @@ button {
       }
     }
   }
+}
+
+.box {
+  display: block;
+  float: right;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  color: #9b9b9b;
+  padding: 10px;
+  position: absolute;
+  width: 378px;
+  height: 44px;
+  background: #aaa;
+  border: 1px solid #dfdfdf;
 }

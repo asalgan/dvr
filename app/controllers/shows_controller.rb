@@ -31,7 +31,6 @@ class ShowsController < ApplicationController
     elsif show.box.box_number == 2
       record_show(box_two, show)
     end
-    redirect_to :back
   end
 
   def delete_record
@@ -52,17 +51,20 @@ class ShowsController < ApplicationController
     end
 
     def record_show(box, show)
-    overlapping_shows = box.shows.where(recording: true).where("start_time <= :show_end AND end_time >= :show_start", {show_start: show.start_time, show_end: show.end_time}).flatten.first
+      @overlapping_shows = box.shows.where(recording: true).where("start_time <= :show_end AND end_time >= :show_start", {show_start: show.start_time, show_end: show.end_time}).flatten.first
 
-    if overlapping_shows.present?
       respond_to do |format|
-        format.js { render :js => "my_function();" }
+        if @overlapping_shows.present?
+          format.js do
+             render :nothing => true 
+           end
+        else
+          show.update_attributes(:recording => true)
+          show.save
+          redirect_to :back
+        end
       end
-    else
-      show.update_attributes(:recording => true)
-      show.save
     end
-  end
 
 
 end

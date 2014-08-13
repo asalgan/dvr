@@ -13,14 +13,14 @@
           <%= show.end_time.strftime("%I:%M%P") %></span>
           <span class="minutes-long"><%= (show.end_time.to_i - show.start_time.to_i)/60 %> minutes</span>
           <% if show.recording == false %>
-            <div class="not-currently-recording">
+            <div class="recording">
               <%= form_for show, :url => show_record_path(:show_id => show.id), method: :post do |f| %>
                 <%= f.select :box_id, @show_dropdowns, { :include_blank => 'Select a box' }, class: "show-radio-button", id: "show_box_id_#{show.id}" %>
                 <%= f.submit "Record", data: { disable_with: "Please wait.." }, :disabled => true, class: "record-button" %>
               <% end %>
             </div>
           <% else %>
-            <div class="currently-recording">
+            <div class="recording">
               Recording on Box <%= show.box.box_number %>
               <%= link_to "Cancel", show_delete_record_path(:show_id => show.id), data: { disable_with: "Cancelling.." }, class: "cancel-record-button" %>
             </div>
@@ -28,6 +28,26 @@
         </li>
       <% end %>
     </ul>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= @shows.first.title %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
+</div>
+
+  </div>
+
 
 </section>
