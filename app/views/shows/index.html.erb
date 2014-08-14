@@ -5,7 +5,7 @@
   </p>
   <div class="all-shows">
     <ul class="show-cards">
-      <% @shows.each do |show| %>
+      <% @shows.order("channel ASC").each do |show| %>
         <li class="show col-md-4 col-md-offset-1">
           <span class="show-title"><%= show.title %></span>
           <span class="show-channel">Channel <%= show.channel %></span>

@@ -7,7 +7,7 @@
     <h3>DVR Box 1</h3>
     <ul class="shows-list">
       <% if @box_1_shows.present? %>
-        <% @box_1_shows.each do |show| %>
+        <% @box_1_shows.order("channel ASC").each do |show| %>
           <%= render :partial => 'shows_list_items', :locals => { :show => show } %>
         <% end %>
       <% else %>
@@ -20,7 +20,7 @@
     <h3>DVR Box 2</h3>
     <ul class="shows-list">
       <% if @box_2_shows.present? %>
-        <% @box_2_shows.each do |show| %>
+        <% @box_2_shows.order("channel ASC").each do |show| %>
           <%= render :partial => 'shows_list_items', :locals => { :show => show } %>
         <% end %>
       <% else %>
