@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe ShowsController do
+describe BoxesController do
 
 end
