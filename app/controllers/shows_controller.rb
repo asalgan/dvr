@@ -1,22 +1,24 @@
 class ShowsController < ApplicationController
 
+  respond_to :html, :js
+
   def index
     @shows = Show.all
     @show_dropdowns = Box.all.collect { |p| [ p.box_number, p.id ] }
     @page_class = "show_page"
   end
 
-  def update
-    @show = Show.find(params[:id])
+  # def update
+  #   @show = Show.find(params[:id])
 
-    respond_to do |format|
-      if @show.update
-        format.html { redirect_to show_url }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @show.update
+  #       format.html { redirect_to show_url }
+  #     else
+  #       format.html { render action: 'edit' }
+  #     end
+  #   end
+  # end
 
   def edit
     @show = Show.find(params[:id])
@@ -40,7 +42,11 @@ class ShowsController < ApplicationController
     redirect_to :back
   end
 
-  private
+  def change_recording
+
+  end
+
+  # private
 
     def box_one
       Box.find_by(:box_number => 1)
@@ -53,14 +59,15 @@ class ShowsController < ApplicationController
     def record_show(box, show)
       @overlapping_shows = box.shows.where(recording: true).where("start_time <= :show_end AND end_time >= :show_start", {show_start: show.start_time, show_end: show.end_time}).flatten.first
 
-      respond_to do |format|
-        if @overlapping_shows.present?
-          format.js
-        else
-          show.update_attributes(:recording => true)
-          show.save
-          redirect_to :back
+      if @overlapping_shows.present?
+        respond_to do |format|
+          xhr :post, :record, format: :js
         end
+        # redirect_to action: 'index', via: :change_recording
+      else
+        show.update_attributes(:recording => true)
+        show.save
+        redirect_to :back
       end
     end
 

@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   	post :delete_record
   end
 
+  # post '/change_recording' =>'shows#change_recording'
+
 
 end
