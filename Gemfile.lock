@@ -207,7 +207,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.0.3)
-  rails_12factor (= 0.0.2)
+  rails_12factor
   rails_layout
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.3)

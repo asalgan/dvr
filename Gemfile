@@ -13,6 +13,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form'
 gem 'spork-rails', '4.0.0'
+gem 'rails_12factor'
 
 
 group :development do
