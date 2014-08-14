@@ -5,10 +5,12 @@ DvrSystem.destroy_all
 Box.destroy_all
 Show.destroy_all
 
-DvrSystem.create(:user_id => User.last.id)
+User.create(:name => "Bob", :email => "bob@hotmail.com", :password => "foobar123", :password_confirmation => "foobar123")
 
-Box.create(box_number:"1", :dvr_system_id => DvrSystem.last.id)
-Box.create(box_number:"2", :dvr_system_id => DvrSystem.last.id)
+DvrSystem.create(:user_id => User.where(:name => "Bob").id
+
+Box.create(:box_number => 1, :dvr_system_id => DvrSystem.id)
+Box.create(:box_number => 2, :dvr_system_id => DvrSystem.id)
 
 
 t = Time.now
