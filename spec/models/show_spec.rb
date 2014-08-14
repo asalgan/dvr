@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 describe Show do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:user) { FactoryGirl.create(:user) }
+  before { @show = user.shows.build(title: "Show Title", :channel => 30, ) }
+
+
+
 end

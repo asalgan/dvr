@@ -8,17 +8,17 @@ class ShowsController < ApplicationController
     @page_class = "show_page"
   end
 
-  # def update
-  #   @show = Show.find(params[:id])
+  def update
+    @show = Show.find(params[:id])
 
-  #   respond_to do |format|
-  #     if @show.update
-  #       format.html { redirect_to show_url }
-  #     else
-  #       format.html { render action: 'edit' }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @show.update
+        format.html { redirect_to show_url }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
+  end
 
   def edit
     @show = Show.find(params[:id])
@@ -60,10 +60,11 @@ class ShowsController < ApplicationController
       @overlapping_shows = box.shows.where(recording: true).where("start_time <= :show_end AND end_time >= :show_start", {show_start: show.start_time, show_end: show.end_time}).flatten.first
 
       if @overlapping_shows.present?
-        respond_to do |format|
-          xhr :post, :record, format: :js
-        end
+        # respond_to do |format|
+        #   xhr :post, :record, format: :js
+        # end
         # redirect_to action: 'index', via: :change_recording
+        nil
       else
         show.update_attributes(:recording => true)
         show.save
