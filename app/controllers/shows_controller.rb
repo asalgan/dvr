@@ -33,6 +33,7 @@ class ShowsController < ApplicationController
     elsif show.box.box_number == 2
       record_show(box_two, show)
     end
+    redirect_to :back
   end
 
   def delete_record
@@ -42,9 +43,9 @@ class ShowsController < ApplicationController
     redirect_to :back
   end
 
-  def change_recording
+  # def change_recording
 
-  end
+  # end
 
   # private
 
@@ -68,7 +69,6 @@ class ShowsController < ApplicationController
       else
         show.update_attributes(:recording => true)
         show.save
-        redirect_to :back
       end
     end
 
