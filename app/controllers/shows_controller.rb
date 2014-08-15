@@ -43,11 +43,7 @@ class ShowsController < ApplicationController
     redirect_to :back
   end
 
-  # def change_recording
-
-  # end
-
-  # private
+  private
 
     def box_one
       Box.find_by(:box_number => 1)
