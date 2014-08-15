@@ -15,8 +15,8 @@ require 'rails_helper'
       let(:user) { FactoryGirl.create(:user) }
       before { sign_in user }
 
-      it { should have_link('Sign out', href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Sign out', href: destroy_user_session_path) }
+      it { should_not have_link('Sign in', href: new_user_session_path) }
       
       describe "followed by signout" do
         before { click_link "Sign out" }
@@ -25,27 +25,27 @@ require 'rails_helper'
 
     end
 
-    # describe "authorization" do
+    describe "authorization" do
 
-    #   describe "for non-signed-in users" do
-    #     let(:user) { FactoryGirl.create(:user) }
-        
-    #     describe "when attempting to visit a protected page" do
-    #       before do
-    #         visit dvr_systems_path(user)
-    #         fill_in "Email",    with: user.email
-    #         fill_in "Password", with: user.password
-    #         click_button "Sign in"
-    #       end
-    #     end
+      describe "for non-signed-in users" do
+        let(:user) { FactoryGirl.create(:user) }
 
-    #     describe "after signing in" do
-    #       it "should render dvr page" do
-    #         page.should have_selector("h1", :text => "My Current Recordings")
-    #       end
-    #     end
+        describe "after signing in" do
+          before do
+            visit new_user_session_path
+            sign_in user
+          end
 
-      # end 
-    # end
+          it "should render dvr page" do
+            page.should have_selector("h1", text: "My Current Recordings")
+          end
+
+          it "should have shows link" do
+            page.should have_link("All shows", :href => shows_url)
+          end
+        end
+
+      end 
+    end
 
   end
