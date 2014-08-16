@@ -9,7 +9,8 @@ describe "Show pages" do
   before { visit shows_url }
 
   before do
-    @show = Show.create(title: "Show Title", :recording => false, :start_time => Time.now, :end_time => Time.now+30.minutes, :box_id => nil )
+    @show = Show.first
+    @box = Box.first
   end
 
   describe "show page" do
@@ -33,7 +34,7 @@ describe "Show pages" do
       describe "before selecting a box" do
 
         it "should not have a box associated with it yet" do
-          expect(@show.box_id).to eq (nil)
+          @show.box_id.should be_nil
         end
 
         it "should not be able to click record" do
@@ -43,7 +44,14 @@ describe "Show pages" do
         it "should be nil if dropdown selected but no option selected" do
           within first(".show-radio-button") do
             first("option").click
-            expect(@show.box_id).to eq (nil)
+            @show.box_id.should be_nil
+          end
+        end
+
+        it "should run the record method successfully" do
+          expect do
+            xhr :put, :record, (@show.box_id).should == @box.id
+            expect(response).to be_success
           end
         end
       end
@@ -54,13 +62,24 @@ describe "Show pages" do
           first(".show-radio-button") do
             select "1", from: 'show_box_id'
             find('.record-button').click
+            @show.record!
+            @show.save
           end
         end
 
-        it "should have a box associated with it" do
-          expect(@show.box.quantity).to eq (1)
-            # expect(@show.box_id).to_not eq (nil)
+        it "should run the record method" do
+          expect { @show.to respond_to(:record) } 
         end
+
+        it "should have a box associated with it" do
+          @show.box.should_not be_nil
+        end
+
+        it "should have the correct box associated with it" do
+          @show.box_id.should = @box.id 
+        end
+
+
       end
 
     end
