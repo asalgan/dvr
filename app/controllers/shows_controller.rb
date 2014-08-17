@@ -34,6 +34,8 @@ class ShowsController < ApplicationController
       record_show(box_two, show)
     end
     redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to shows_path
   end
 
   def delete_record
