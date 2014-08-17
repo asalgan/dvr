@@ -7,9 +7,7 @@ describe ShowsController do
 
 	describe "recording a show" do
 
-    before do
-    	record_show(show)
-    end
+    before { record_show(show) }
 
     it "should run the record method" do
       expect { show.to respond_to(:record) } 

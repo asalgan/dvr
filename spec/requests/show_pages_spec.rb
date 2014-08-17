@@ -7,8 +7,8 @@ describe "Show pages" do
   let(:user) { FactoryGirl.create(:user) }
   let(:show) { FactoryGirl.create(:show) } 
   let(:box)  { FactoryGirl.create(:box)  } 
-  before { sign_in user     }
-  before { visit shows_url  }
+  before { sign_in user    }
+  before { visit shows_url }
 
 
   describe "show page" do
@@ -16,13 +16,14 @@ describe "Show pages" do
     it { should have_link('Sign out', href: destroy_user_session_path            ) }
     it { should have_link("← Back to current recordings", href: dvr_systems_path ) }
     it { should_not have_link('Sign in', href: new_user_session_path             ) }
-    it { should have_selector(:css, "li.show"                                    ) } 
+    it { should have_selector(:css, "li.show"             ) } 
+    it { should have_selector(:css, "span.show-title"     ) } 
+    it { should have_selector(:css, "span.show-channel"   ) } 
+    it { should have_selector(:css, "span.show-time"      ) } 
+    it { should have_selector(:css, "span.minutes-long"   ) }
 
     describe "show box when show not recording" do
-      it { should have_selector(:css, "span.show-title"            ) } 
-      it { should have_selector(:css, "span.show-channel"          ) } 
-      it { should have_selector(:css, "span.show-time"             ) } 
-      it { should have_selector(:css, "span.minutes-long"          ) } 
+ 
       it { should have_selector(:css, "select.show-radio-button"   ) } 
       it { should have_selector(:css, "input.record-button"        ) } 
     end
