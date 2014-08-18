@@ -16,6 +16,11 @@ FactoryGirl.define do
 
   factory :box do
   	box_number 1
+    dvr_system
+  end
+
+  factory :dvr_system do
+    user
   end
 
 end

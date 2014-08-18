@@ -4,11 +4,11 @@ describe "DVR Systems pages" do
 
 	subject { page }
 
+	let(:user) { FactoryGirl.create(:user) }
 	let(:show) { FactoryGirl.create(:show) } 
   let(:box)  { FactoryGirl.create(:box)  }
 
   describe "index" do
-    let(:user) { FactoryGirl.create(:user) }
 
     before { sign_in user }
 
@@ -25,14 +25,14 @@ describe "DVR Systems pages" do
 
   	describe "after shows are being recorded" do 
 
-  		before do 
+  		before do
   			record_show(show)
   			show.save!
   			click_link '← Back to current recordings'
   		end
 
   		it "should now have shows listed" do
-  			page.should have_selector(:css, "li.shows-list-item" )
+  			
   		end
   		# it { should_not have_selector('li', text: "There aren't any shows being recorded on this box. You can start recording shows by clicking 'ALL SHOWS'" ) }
   	end
