@@ -137,28 +137,25 @@ button {
 }
 .nav-link {
   border: 3px solid $orange;
+  padding: 10px 25px;
   color: white;
   background: transparent;
   -webkit-font-smoothing: antialiased;
   border-radius: 7px;
   @extend %transition;
   margin-left: 20px;
-  font-size: 20px;
-  color: white;
-  padding: 15px 25px;
 
-  a {
-    font-size: 20px;
-    padding: 15px 25px;
-
-    &:hover {
-      color: white;
-    }
+  &:first-child {
+    width: 124px;
   }
 
   &:hover {
     background-color: $orange;
+  }
+
+  a {
     color: white;
+    font-size: 20px;
   }
 }
 
