@@ -6,7 +6,7 @@ describe "DVR Systems pages" do
 
 	let(:user) { FactoryGirl.create(:user) }
 	let(:show) { FactoryGirl.create(:show) } 
-  let(:box)  { FactoryGirl.create(:box)  }
+  let(:box)  { FactoryGirl.create(:box) }
 
   describe "index" do
 
@@ -27,14 +27,16 @@ describe "DVR Systems pages" do
 
   		before do
   			record_show(show)
-  			show.save!
-  			click_link '← Back to current recordings'
   		end
 
   		it "should now have shows listed" do
-  			
+  			box.shows.each do |show|
+  				expect(page).to have_selector("li", text: show.title)
+  				expect(page).to have_selector("li", text: "#{show.start_time.strftime('%I:%M%P')} - #{show.end_time.strftime('%I:%M%P')}")
+  				expect(page).to have_selector("li", text: show.channel)
+  				expect(page).to have_link("Cancel", href: show_delete_record_path(show))
+  			end
   		end
-  		# it { should_not have_selector('li', text: "There aren't any shows being recorded on this box. You can start recording shows by clicking 'ALL SHOWS'" ) }
   	end
 
   end
