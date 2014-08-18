@@ -137,13 +137,15 @@ button {
 }
 .nav-link {
   border: 3px solid $orange;
-  padding: 10px 25px;
   color: white;
   background: transparent;
   -webkit-font-smoothing: antialiased;
   border-radius: 7px;
   @extend %transition;
   margin-left: 20px;
+  font-size: 20px;
+  color: white;
+  padding: 10px 25px;
 
   &:first-child {
     width: 124px;
@@ -151,11 +153,6 @@ button {
 
   &:hover {
     background-color: $orange;
-  }
-
-  a {
-    color: white;
-    font-size: 20px;
   }
 }
 
