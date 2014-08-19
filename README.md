@@ -21,4 +21,4 @@ What else should the DVR app be able to do:
 
 What gave me some trouble
 
-I believe there is either an issue or something I can't figure out yet with Rails 4.1 and the respond_to do |format| block when you do format.js in Rails 4.1.0. I tried implementing an AJAX call that tells the user which show is currently recording (which I am able to pull using @overlapping_shows) but couldn't get that piece to work. 
+I believe there is either an issue or something I haven't figured out yet with Rails 4.1 and the respond_to do |format| block when you do format.js in Rails 4.1.0. I tried implementing an AJAX call that tells the user which show is currently recording (which I am able to pull using @overlapping_shows) but couldn't get that piece to work. 
