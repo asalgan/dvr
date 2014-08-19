@@ -1,6 +1,12 @@
 DVR
+
 ================
 Notes
+
+Rather than having the user enter schedules, date, timespan, etc., I seeded the database with 6 existing "shows" that they can select to record. It makes more sense for the end user to find a show they like and select it (like with current DVR systems) as opposed to having the user enter that data (as was the case with VCR's)
+The DVR page lists all boxes in their current DVR system (2 boxes), and which shows are currently being recorded to each box. This was done to provide the user with easy access to current recordings, as well as delete current recordings. 
+The shows page that lists shows that can be recorded is listed by channel number. If there was more time, it would also make sense to include a search feature for the user to search by the name of the show. 
+
 
 Completed couple of the Extensions. User can see currently recording shows, or pick from a list of shows to record, as well as select a box to record on that's currently free during that recording time period. 
  
